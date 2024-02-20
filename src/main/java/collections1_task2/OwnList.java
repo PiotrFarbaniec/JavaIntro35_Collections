@@ -1,3 +1,5 @@
+package collections1_task2;
+
 public interface OwnList {
 
     int size();

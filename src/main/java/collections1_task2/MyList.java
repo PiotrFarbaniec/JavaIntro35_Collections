@@ -1,3 +1,5 @@
+package collections1_task2;
+
 import java.util.Arrays;
 
 public class MyList implements OwnList {
