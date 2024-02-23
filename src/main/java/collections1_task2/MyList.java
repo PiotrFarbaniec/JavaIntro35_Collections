@@ -1,5 +1,6 @@
 package collections1_task2;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyList implements OwnList {
@@ -18,12 +19,11 @@ public class MyList implements OwnList {
     public MyList (int initSize) {
         if(initSize < 0) {
             throw new IllegalArgumentException("Invalid value provided: " + initSize);
-        } else if ( initSize >= 0 && initSize <= DEFAULT_SIZE) {
+        } else if (initSize <= DEFAULT_SIZE) {
             this.size = 0;
             this.capacity = DEFAULT_SIZE;
             this.arrayElement = new Integer[capacity];
-
-        } else if (initSize > DEFAULT_SIZE) {
+        } else {
             this.size = 0;
             this.capacity = initSize;
             this.arrayElement = new Integer[capacity];
@@ -56,16 +56,20 @@ public class MyList implements OwnList {
         Integer removed = this.arrayElement[index];
         this.arrayElement[index] = null;
         arrayReindex(index);
+        this.size--;
         return removed;
     }
 
     private void arrayReindex(int index) {
-        int from = index + 1;
+        for(int i = index + 1; i < size; i++) {
+            arrayElement[i - 1] = arrayElement[i];
+        }
+
+        /*int from = index + 1;
         for (int i = 0; i < size - from; i++) {
             arrayElement[index + i] = arrayElement[from + i];
-        }
-        this.size--;
-        arrayElement[size] = null;
+        }*/
+        //arrayElement[size] = null;
     }
 
     @Override
@@ -85,9 +89,12 @@ public class MyList implements OwnList {
         else if (this.size == this.capacity) {
             extendSize();
         }
-        for (int i = size - 1; i >= index; i--) {
+        for (int i = index; i + 1 < size; i++) {
             arrayElement[i + 1] = arrayElement[i];
         }
+        /*for (int i = size - 1; i >= index; i--) {
+            arrayElement[i + 1] = arrayElement[i];
+        }*/
         arrayElement[index] = element;
         size++;
     }

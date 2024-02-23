@@ -14,19 +14,23 @@ public class MainClass {
         list.add(90);
         list.add(100);
         list.add(110);
-        list.add(120);
-        list.add(130);
-        list.add(8, 1000);
-        list.add(11, 2000);
-        list.add(15, 3000);
-        System.out.println(list);
-        System.out.println("size1: " + list.size());
-        System.out.println(list.get(3));
-        list.remove(7);
-        System.out.println(list.isEmpty());
 
+        list.add(4, 999);
+        list.add(11, 888);
+
+        System.out.println(list.size());
+        System.out.println(list);
+        list.remove(4);
+        System.out.println(list.size());
         System.err.println(list);
-        System.err.println("size2: " + list.size());
+        //        System.out.println(list);
+//        System.out.println("size1: " + list.size());
+//        System.out.println(list.get(3));
+//        list.remove(7);
+//        System.out.println(list.isEmpty());
+//
+//        System.err.println(list);
+//        System.err.println("size2: " + list.size());
 
     }
 }
