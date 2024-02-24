@@ -66,7 +66,7 @@ public class MyList<T> implements OwnList<T> {
         }
         for (int i = 0; i < size; i++) {
             boolean isContain = false;
-            if (arrayElement[i].hashCode() == e.hashCode()) {
+            if (arrayElement[i].equals(e)) {
                 arrayElement[i] = null;
                 arrayReindex(i);
                 isContain = true;
