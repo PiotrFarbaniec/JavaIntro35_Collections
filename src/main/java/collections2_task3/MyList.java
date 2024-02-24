@@ -2,7 +2,7 @@ package collections2_task3;
 
 import java.util.Arrays;
 
-public class MyList<E> implements OwnList<E> {
+public class MyList<T> implements OwnList<T> {
     private static final int DEFAULT_SIZE = 10;
     private Object[] arrayElement;
     private int size;
@@ -35,7 +35,7 @@ public class MyList<E> implements OwnList<E> {
     }
 
     @Override
-    public boolean add(E e) {
+    public boolean add(T e) {
         if (this.size == capacity) {
             extendSize();
         }
@@ -52,15 +52,15 @@ public class MyList<E> implements OwnList<E> {
     }
 
     @Override
-    public E get(int index) {
+    public T get(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("There's no such index: " + index);
         }
-        return (E) arrayElement[index];
+        return (T) arrayElement[index];
     }
 
     @Override
-    public boolean remove(E e) {
+    public boolean remove(T e) {
         if (e == null) {
             throw new IllegalArgumentException("Wrong parameter: " + e + ", there's no such object");
         }

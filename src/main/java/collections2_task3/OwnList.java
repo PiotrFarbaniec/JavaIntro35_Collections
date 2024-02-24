@@ -1,8 +1,8 @@
 package collections2_task3;
 
-public interface OwnList<E> {
+public interface OwnList<T> {
     int size();
-    boolean add(E e);
-    E get (int index);
-    boolean remove (E e);
+    boolean add(T e);
+    T get (int index);
+    boolean remove (T e);
 }
