@@ -4,39 +4,49 @@ import java.util.*;
 
 public class NamesList {
     public static void main(String[] args) {
-        String[] names = {"Anna", "Katarzyna", "Tymon", "Tadeusz",
-                          "Anna", "Karolina", "Dorota", "Piotr"};
+        List<String> namesList = new ArrayList<>();
+        namesList.add("Anna");
+        namesList.add("Katarzyna");
+        namesList.add("Tymon");
+        namesList.add("Tadeusz");
+        namesList.add("Anna");
+        namesList.add("Karolina");
+        namesList.add("Dorota");
+        namesList.add("Piotr");
+        List<String> list1 = new ArrayList<>();
+        list1.addAll(namesList);
+        List<String> list2 = new ArrayList<>();
+        list2.addAll(namesList);
+        List<String> list3 = new ArrayList<>();
+        list3.addAll(namesList);
 
-        var list1 = createNoRepetitionList(names);
-        System.out.println(list1);
-        var list2 = getReverseOrderList(names);
-        System.out.println(list2);
-        modifyListObject(list2, "Anna", "Joanna");
-        System.out.println(list2);
+        System.out.println(namesList);
+        System.out.println(createNoRepetitionList(list1));
+        System.out.println(getReverseOrderList(list2));
+        modifyListObjects(list3, "Anna", "Joanna");
+        System.out.println(list3);
     }
 
-    static Collection createNoRepetitionList(String... names) {
-        Set namesList = new HashSet<String>();
-        for (String name: names ) {
-            namesList.add(name);
+    static List createNoRepetitionList(List list) {
+        for (int i = 0; i < list.size(); i++ ) {
+            for (int j = i+1; j < list.size(); j++) {
+                if (list.get(i).equals(list.get(j))) {
+                    list.remove(list.get(j));
+                }
+            }
         }
-        return namesList;
+        return list;
     }
 
-    static List getReverseOrderList (String... names) {
-        List list = new ArrayList<String>();
-        List reveseList = new ArrayList<String>();
-        for (String name : names) {
-            list.add(name);
+    static List getReverseOrderList (List list) {
+        var reverse = new ArrayList<>();
+        for (int i = list.size()-1; i >= 0; i--) {
+            reverse.add(list.get(i));
         }
-        ListIterator<String> iterator = list.listIterator(list.size());
-        while(iterator.hasPrevious()){
-            reveseList.add(iterator.previous());
-        }
-        return reveseList;
+        return reverse;
     }
 
-    static void modifyListObject(List<String> c, String renameFrom, String renameTo) {
+    static void modifyListObjects(List c, String renameFrom, String renameTo) {
         for (int i = 0; i < c.size(); i++) {
             if (c.contains(renameFrom)) {
                 c.set(c.indexOf(renameFrom), renameTo);
